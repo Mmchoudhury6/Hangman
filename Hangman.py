@@ -14,11 +14,13 @@ HANGMAN = [
 ]
 
 number_of_fails_allowed = 9
-
+potential_word = []
 with open("words.txt", "r") as f:
     words = f.read().splitlines()
-
-chosen_word = random.choice(words).lower()
+for w in words:
+    if w.isalpha() and len(w) <= 6:
+        potential_word.append(w)
+chosen_word = random.choice(potential_word)
 
 hangman_word = []
 for i in chosen_word:
